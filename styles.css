@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Dosis", sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Index Page */
+
+.btn {
+    background-color: #a5141b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: "Fugaz One", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+header {
+    background-color: #1c1c1b;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6rem;
+}
+
+header h1 {
+    color: #a5141b ;
+    font-family: "Fugaz One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+    text-decoration: underline;
+    text-decoration-color: #e39529 ; 
+    text-underline-offset: 0.5rem;
+}
+
+nav {
+    display: flex;
+    gap: 3rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-family: "Fugaz One", sans-serif;
+    font-size: 1.2em;
+    text-decoration: underline;
+    text-decoration-color: #e39529; 
+    text-underline-offset: 0.25rem;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 5px;
+}
+
+.hero p {
+    margin: 2px;
+    font-size: 1.15rem;
+}
+
+.carousel {
+    position: relative;
+    width: 60%;
+    height: 60vh;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 12px;
+  }
+
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.carousel-image.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+  
+.carousel-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+  
+.carousel-image img.active {
+    display: block;
+  }
+
+.image-text {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.5rem;
+    background: #1c1c1bdc;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+  
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1c1c1bdc;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+button.prev { left: 10px; }
+button.next { right: 10px; }
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button-container p {
+    font-size: 1.15rem;
+    color: #1c1c1b;
+}
+
+#sports-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    text-decoration-color: #e39529 ; 
+    text-underline-offset: 0.2rem;
+}
+
+/* Page 2 */
+
+#cards-outer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0.3rem;
+    background-color: transparent;
+    color: var(--sixty);
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 3 - Home Page</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts for Logo and Body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">GRIT</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="page2.html">Sports</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Welcome to GRIT!</h1>
+        <p>Your ultimate destination for sports information.</p>
+    </div>
+
+    <section class="carousel">
+        <div class="carousel-images">
+            <div class="carousel-image active">
+                <img src="images\nfl.image.jpg" alt="NFL" class="active">
+                <span class="image-text">NFL</span>
+            </div>
+            <div class="carousel-image">
+                <img src="images\mlb.image.jpg" alt="MLB"> 
+                <span class="image-text">MLB</span>
+            </div>
+            <div class="carousel-image">
+                <img src="images\nba.image.jpg" alt="NBA">
+                <span class="image-text">NBA</span>
+            </div>
+            <div class="carousel-image">
+                <img src="images\nhl.image.jpg" alt="NHL">
+                <span class="image-text">NHL</span>
+            </div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </section>
+    
+    <div class="button-container">
+        <p>Explore and learn more about different Leagues, Teams, Players, and Games. Click here for more -></p>
+        <a id="sports-btn" class="btn" href="page2.html">Explore Sports</a>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

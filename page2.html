@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page2</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts for Logo and Body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1 class="logo">GRIT</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="page2.html">Sports</a>
+        </nav>
+    </header>
+
+    <!-- Main section of page -->
+    <main>
+        <select id="league-dropdown" name="leagues">
+            <option value="nfl">NFL</option>
+            <option value="nba">NBA</option>
+            <option value="mlb">MLB</option>
+            <option value="nhl">NHL</option>
+        </select>
+        <select name="teams" id="team-list">
+        </select>
+        <!-- Section to hold the cards -->
+        <div id="cards-outer-container"></div>
+    </main>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
