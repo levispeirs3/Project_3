@@ -168,6 +168,19 @@ button.next { right: 10px; }
     color: var(--sixty);
 }
 
+.player-card, .game-card {
+    background: #F5F5F5;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 250px;
+}
+.player-headshot {
+    width: 150px;
+}
+
+/* --------------------------------------- */
+
 footer {
     background-color: #1c1c1b;
     color: white;
