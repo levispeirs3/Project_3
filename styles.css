@@ -161,12 +161,23 @@ button.next { right: 10px; }
 }
 
 /* Page 2 */
+.select-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
 .hero-dropdown {
     display: flex;
-    align-items: center;
-    margin: 100px 0px 40px 225px;
-    gap: 2rem;
+    justify-content: space-between;
+    width: 75%;
+    margin: 100px 0px 50px 0px;
+}
+
+.dropdown-container {
+    display: flex;
+    gap: 1rem;
 }
 
 select {
@@ -197,13 +208,37 @@ select {
     box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
   }
 
+  .toggle-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .dropdown-toggle bi, button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 0.6rem;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 #cards-outer-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
     background-color: white;
     color: var(--sixty);
-    width: 70%;
+    width: 75%;
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);

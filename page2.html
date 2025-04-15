@@ -12,6 +12,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
 <body>
     <header>
@@ -24,24 +26,31 @@
 
     <!-- Main section of page -->
     <main>
-        <div class="hero-dropdown">
-            <select id="league-dropdown" name="leagues">
-                <!-- <option value="" disabled selected>League</option> -->
-                <option value="nfl">NFL</option>
-                <option value="nba">NBA</option>
-                <option value="mlb">MLB</option>
-                <option value="nhl">NHL</option>
-            </select>
-            
-            <select name="teams" id="team-list">
-                <!-- <option value="" disabled selected>Team</option> -->
-            </select>
+        <div class="select-container">
+            <div class="hero-dropdown">
+                <div class="dropdown-container">
+                    <select id="league-dropdown" name="leagues">
+                        <!-- <option value="" disabled selected>League</option> -->
+                        <option value="nfl">NFL</option>
+                        <option value="nba">NBA</option>
+                        <option value="mlb">MLB</option>
+                        <option value="nhl">NHL</option>
+                    </select>
+                    <select name="teams" id="team-list">
+                        <!-- <option value="" disabled selected>Team</option> -->
+                    </select>
 
-            <select name="roster" id="roster-dropdown">
-                <option value="roster">Roster</option>
-                <option value="recent_games">Recent Games</option>
-            </select>
-        </div>    
+                    <select name="roster" id="roster-dropdown">
+                        <option value="roster">Roster</option>
+                        <option value="recent_games">Recent Games</option>
+                    </select>
+                </div>
+                <div id="" class="toggle-container">
+                    <button><i class="dropdown-toggle bi bi-grid-fill"></i></button>
+                    <button><i class="dropdown-toggle bi bi-list-task"></i></button>
+                </div> 
+            </div>
+        </div>   
         <!-- Section to hold the cards -->
         <div id="cards-outer-container"></div>
 
