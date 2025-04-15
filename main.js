@@ -35,11 +35,14 @@ function makeTeamList(dataObject, selectedLeague) {
     console.log("Teams from", selectedLeague + ":", teams)
     let teamList = document.getElementById("team-list");
 
-    teamList.innerHTML = "";
+    teamList.innerHTML = `
+  <option value="" disabled selected>Team</option>
+`;
 
     teams.forEach(team => {
         let option = document.createElement("option");
         option.textContent = team.name;
+        option.value = team.name;
         teamList.appendChild(option);
     });
     
@@ -52,10 +55,12 @@ function updateCards() {
     let container = document.getElementById("cards-outer-container");
     container.innerHTML = ""; // Clear previous content
     let selectedTeam = globalDataObject[league]["teams"].find(team => team.name === teamName);
+    
     if (!selectedTeam) {
         container.innerText = "Team not found.";
         return;
     }
+    
     if (view === "roster") {
         selectedTeam.roster.forEach(player => {
             let card = document.createElement("div");
