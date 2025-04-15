@@ -1,11 +1,13 @@
 * {
     box-sizing: border-box;
+
 }
 
 body {
     margin: 0;
     font-family: "Dosis", sans-serif;
-    background-color: #f4f4f4;
+    background: url('images/background.png') repeat top left, rgba(0, 0, 0, 1);
+    background-size: auto;
 }
 
 /* Index Page */
@@ -160,12 +162,55 @@ button.next { right: 10px; }
 
 /* Page 2 */
 
+.hero-dropdown {
+    display: flex;
+    align-items: center;
+    margin: 100px 0px 40px 225px;
+    gap: 2rem;
+}
+
+select {
+    appearance: none;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    padding-right: 2.5rem; 
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 250px;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 20 20' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 7l3 3 3-3z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right .25rem center;
+    background-size: 1.75rem;
+  }
+  
+  select:hover {
+    border-color: #e39529;
+  }
+  
+  select:focus {
+    border-color: #e39529;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
+  }
+
 #cards-outer-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 0.3rem;
-    background-color: transparent;
+    grid-gap: 1rem;
+    background-color: white;
     color: var(--sixty);
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    margin: 0 auto;
+    justify-items: center;
+    min-height: 20vh;
 }
 
 .player-card, .game-card {
@@ -178,6 +223,7 @@ button.next { right: 10px; }
 .player-headshot {
     width: 150px;
 }
+  
 
 /* --------------------------------------- */
 
