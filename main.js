@@ -144,7 +144,7 @@ function updateCards() {
 
             card.innerHTML = `
             <h3>${game.date}</h3>
-            <p>${game.shortName}</p>
+            <div><p>${game.shortName}</p></div>
 
             <div class="team-score">
                 <img src="${team1Logo}" alt="${team1.team} logo" class="team-logo">
