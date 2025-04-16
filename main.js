@@ -12,29 +12,34 @@ fetch("https://sports.is120.ckearl.com")
 function completeSteps(allLeagues) {
     // makeTeamList(allLeagues)
     // console.log(allLeagues)
-    document.getElementById("cards-outer-container").classList.add("grid-view");
-    document.getElementById("grid-view-btn").classList.add("active");
+    const cardsContainer = document.getElementById("cards-outer-container");
+    const gridBtn = document.getElementById("grid-view-btn");
+    const dropdown = document.getElementById("league-dropdown");
 
-    let dropdown = document.getElementById("league-dropdown");
+    if (cardsContainer && gridBtn && dropdown) {
+        cardsContainer.classList.add("grid-view");
+        gridBtn.classList.add("active");
 
-    dropdown.addEventListener("change", () => {
-        let selectedLeague = dropdown.value;
-        if (selectedLeague && allLeagues[selectedLeague]) {
-            makeTeamList(allLeagues, selectedLeague);
+        dropdown.addEventListener("change", () => {
+            let selectedLeague = dropdown.value;
+            if (selectedLeague && allLeagues[selectedLeague]) {
+                makeTeamList(allLeagues, selectedLeague);
+            };
+        });
+
+        if (dropdown.value && allLeagues[dropdown.value]) {
+            makeTeamList(allLeagues, dropdown.value);
         };
-    });
 
-    if (dropdown.value && allLeagues[dropdown.value]) {
-        makeTeamList(allLeagues, dropdown.value);
-    };
+        document.getElementById("team-list").addEventListener("change", updateCards);
+        document.getElementById("roster-dropdown").addEventListener("change", updateCards);
 
-    document.getElementById("team-list").addEventListener("change", updateCards);
-    document.getElementById("roster-dropdown").addEventListener("change", updateCards);
-    
-    updateCards();
+        updateCards();
+    }
 
     showRandomPlayer(allLeagues);
 }
+
 
 
 function makeTeamList(dataObject, selectedLeague) {
@@ -254,6 +259,9 @@ function showRandomPlayer(allLeagues) {
       <p><strong>Team:</strong> ${randomPlayer.team}</p>
       <p><strong>Position:</strong> ${randomPlayer.position}</p>
       <p><strong>League:</strong> ${randomPlayer.league}</p>
+      <p><strong>Position:</strong> ${randomPlayer.position}</p>
+      <p><strong>Position:</strong> ${randomPlayer.position}</p>
+      <p><strong>Position:</strong> ${randomPlayer.position}</p>
     `;
   }
   
