@@ -213,8 +213,15 @@ select {
     justify-content: end;
     align-items: center;
     width: 100%;
-    gap: 2rem;
+    gap: 1rem;
   }
+
+  .toggle-container button.active {
+    background-color: #ddd;
+    border-radius: 6px;
+    border: solid #e39529;
+    transition: background-color 0.3s;
+}
 
   .dropdown-toggle bi, button{
     display: flex;
@@ -232,10 +239,50 @@ select {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#cards-outer-container {
+.team-header {
+    grid-column: 1 / -1;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0 0 10px 0;
+    border-bottom: 2px solid #ccc; /* Optional: adds a subtle divider */
+}
+
+.header-team-logo {
+    width: 100px;
+}
+
+.team-name {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+#cards-outer-container.grid-view {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1rem;
+    background-color: white;
+    color: var(--sixty);
+    width: 75%;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    margin: 0 auto;
+    justify-items: center;
+    min-height: 20vh;
+}
+
+#cards-outer-container.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     background-color: white;
     color: var(--sixty);
     width: 75%;
@@ -255,8 +302,57 @@ select {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     width: 250px;
 }
+
+.game-card.win {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 250px;
+    border: 2px solid #28a745;
+}
+
+.game-card.loss {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 250px;
+    border: 2px solid #dc3545;
+}
+
+.game-card.tie {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 250px;
+    border: 2px solid #6c757d;
+}
+
 .player-headshot {
     width: 150px;
+}
+
+.team-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.team-logo {
+    width: 40px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.winner {
+    font-weight: bold;
+    /* color: #0b6623; */
+}
+
+.placeholder-message {
+    text-align: center;
+    font-style: italic;
+    margin-top: 20px;
+    font-size: 1.1rem;
 }
   
 
