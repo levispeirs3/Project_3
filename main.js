@@ -32,6 +32,8 @@ function completeSteps(allLeagues) {
     document.getElementById("roster-dropdown").addEventListener("change", updateCards);
     
     updateCards();
+
+    showRandomPlayer(allLeagues);
 }
 
 
@@ -95,13 +97,15 @@ function updateCards() {
             card.style.border = `2px solid ${primaryColor}`;
 
             card.innerHTML = `
-                <img src="${player.headshot}" alt="Headshot of ${player.fullName}" class="player-headshot">
-                <h2>#${player.jersey}</h2>
-                <h3>${player.fullName}</h3>
-                <p>Position: ${player.position}</p>
-                <p>Height: ${player.height} in</p>
-                <p>Weight: ${player.weight} lb</p>
-                <p>Age: ${player.age}</p>
+                <div id="list-headshot"><img src="${player.headshot}" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
+                <div id="list-jersey"><h2>#${player.jersey}</h2></div>
+    
+                <div id="list-name"><h3>${player.fullName}</h3></div>
+                <div id="list-position"><p>Position: ${player.position}</p></div>
+                <div id="list-height"><p>Height: ${player.height} in</p></div>
+                <div id="list-weight"><p>Weight: ${player.weight} lb</p></div>
+                <div id="list-age"><p>Age: ${player.age}</p></div>
+                
             `;
             container.appendChild(card);
         });
@@ -143,15 +147,15 @@ function updateCards() {
             card.classList.add(outcomeClass);
 
             card.innerHTML = `
-            <h3>${game.date}</h3>
-            <div><p>${game.shortName}</p></div>
+            <div id="list-date"><h3>${game.date}</h3></div>
+            <div id="list-shortName"><p>${game.shortName}</p></div>
 
-            <div class="team-score">
+            <div id="list-team-name-1" class="team-score">
                 <img src="${team1Logo}" alt="${team1.team} logo" class="team-logo">
                 <p class="${team1.winner ? 'winner' : ''}">${team1.team}: ${team1.score}</p>
             </div>
 
-            <div class="team-score">
+            <div id="list-team-name-2" class="team-score">
                 <img src="${team2Logo}" alt="${team2.team} logo" class="team-logo">
                 <p class="${team2.winner ? 'winner' : ''}">${team2.team}: ${team2.score}</p>
             </div>
@@ -202,3 +206,54 @@ function setActiveView(view) {
 
 gridBtn.addEventListener("click", () => setActiveView("grid"));
 listBtn.addEventListener("click", () => setActiveView("list"));
+
+
+
+
+
+
+
+
+///////////////// Player of the week //////////////////////
+//////////////////////////////////////////////////////////
+
+function showRandomPlayer(allLeagues) {
+    const allPlayers = [];
+  
+    for (let leagueKey in allLeagues) {
+      const league = allLeagues[leagueKey];
+  
+      if (league?.teams?.length) {
+        league.teams.forEach(team => {
+          if (Array.isArray(team.roster)) {
+            team.roster.forEach(player => {
+              allPlayers.push({
+                fullName: player.fullName,
+                headshot: player.headshot || "https://via.placeholder.com/150",
+                position: player.position,
+                team: team.name,
+                league: leagueKey.toUpperCase()
+              });
+            });
+          }
+        });
+      }
+    }
+  
+    if (allPlayers.length === 0) {
+      document.getElementById("spotlight-player").innerHTML = "<p>No players found.</p>";
+      return;
+    }
+  
+    const randomPlayer = allPlayers[Math.floor(Math.random() * allPlayers.length)];
+  
+    const spotlight = document.getElementById("spotlight-player");
+    spotlight.innerHTML = `
+      <img src="${randomPlayer.headshot}" alt="${randomPlayer.fullName}" style="width:150px; border-radius: 50%;">
+      <h3>${randomPlayer.fullName}</h3>
+      <p><strong>Team:</strong> ${randomPlayer.team}</p>
+      <p><strong>Position:</strong> ${randomPlayer.position}</p>
+      <p><strong>League:</strong> ${randomPlayer.league}</p>
+    `;
+  }
+  

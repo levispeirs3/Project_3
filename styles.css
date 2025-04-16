@@ -160,7 +160,101 @@ button.next { right: 10px; }
     text-underline-offset: 0.2rem;
 }
 
-/* Page 2 */
+/*//////////////////////// Player of the Week ////////////////////////////*/
+/*//////////////////////////////////////////*/
+#player-of-the-week {
+    background-color: #f4f4f4;
+    padding: 2rem;
+    text-align: center;
+    border-top: 3px solid #222;
+    margin-top: 3rem;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+.player-spotlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.player-spotlight img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #222;
+}
+
+.player-spotlight h3 {
+    margin: 0.5rem 0 0.25rem 0;
+    font-size: 1.5rem;
+}
+
+.player-spotlight p {
+    margin: 0.2rem;
+}
+
+
+footer {
+    background-color: #1c1c1b;
+    color: white;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    margin-top: 100px;
+    font-family: "Fugaz One", sans-serif;
+} 
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    text-decoration-color: #e39529; 
+    text-underline-offset: 0.25rem;
+}
+
+.nav-teams {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.footer-info {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-info p {
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+h1.logo {
+    margin: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.social-icons a {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+  }
+
+/* --- Page 2 --- */
+
 .select-container {
     display: flex;
     justify-content: center;
@@ -297,12 +391,92 @@ select {
     min-height: 20vh;
 }
 
+/* player-card grid-view */
+
+#cards-outer-container.grid-view .player-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 90%;
+}
+
+#cards-outer-container.grid-view .player-card {
+    position: relative;
+}
+
+#cards-outer-container.grid-view .player-card #list-jersey {
+    position: absolute;
+    top: 8px;
+    right: 30px;
+}
+
+#cards-outer-container.grid-view .player-card #list-name {
+    border-bottom: 3px solid #ccc;
+    width: 100%;
+}
+
+#cards-outer-container.grid-view .player-card h3 {
+    margin: 0.5rem;
+    margin-left: 0.25rem;
+}
+
+#cards-outer-container.grid-view .player-card p {
+    margin: 0.5rem
+}
+
+/* game-card grid-view */
+
+#cards-outer-container.grid-view .game-card #list-shortName {
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #ccc;
+    width: 100%;
+}
+
+#card-outer-container.grid-view .game-card #list-shortName {
+    border-bottom: 3px solid #ccc;
+    width: 100%;
+}
+
+/* player-card list-view */
+
+#cards-outer-container.list-view .player-card {
+    display: flex;
+    align-items: center;
+    width: 90%;
+}
+    
+#cards-outer-container.list-view .player-card > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem;
+}
+
+#cards-outer-container.list-view .player-card > div:not(:first-child) {
+    border-left: 3px solid #ccc;
+}
+
+#cards-outer-container.list-view .player-card #list-headshot img {
+    width: 80px;
+}
+
+#cards-outer-container.list-view .player-card #list-headshot, #cards-outer-container.list-view .player-card #list-jersey, #cards-outer-container.list-view .player-card #list-age {
+    width: 10%;
+}
+
+#cards-outer-container.list-view .player-card #list-name, #cards-outer-container.list-view .player-card #list-position {
+    width: 25%;
+}
+
+#cards-outer-container.list-view .player-card #list-height, #cards-outer-container.list-view .player-card #list-weight {
+    width: 15%;
+}
+
+/* game-card list-view */
+
 #cards-outer-container.list-view .game-card {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 5rem;
-    /* gap: 2rem; */
     width: 90%;
 }
 
@@ -310,8 +484,18 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#cards-outer-container.list-view .game-card > div:not(:first-child) {
     border-left: 3px solid #ccc;
-    padding-left: 3rem;
+}
+
+#cards-outer-container.list-view .game-card #list-date , #cards-outer-container.list-view .game-card #list-shortName {
+    width: 20%;
+}
+
+#cards-outer-container.list-view .game-card #list-team-name-1, #cards-outer-container.list-view .game-card #list-team-name-2 {
+    width: 30%;
 }
 
 .player-card, .game-card {
@@ -373,61 +557,4 @@ select {
     margin-top: 20px;
     font-size: 1.1rem;
 }
-  
 
-/* --------------------------------------- */
-
-footer {
-    background-color: #1c1c1b;
-    color: white;
-    width: 100%;
-    height: 30vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1rem;
-    margin-top: 100px;
-    font-family: "Fugaz One", sans-serif;
-} 
-
-.footer-nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: underline;
-    text-decoration-color: #e39529; 
-    text-underline-offset: 0.25rem;
-}
-
-.nav-teams {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.footer-info {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.footer-info p {
-    margin: 0;
-    font-size: 0.75rem;
-}
-
-h1.logo {
-    margin: 5px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.social-icons a {
-    font-size: 24px;
-    color: white;
-    text-decoration: none;
-  }
