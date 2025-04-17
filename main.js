@@ -235,7 +235,11 @@ function showRandomPlayer(allLeagues) {
               allPlayers.push({
                 fullName: player.fullName,
                 headshot: player.headshot || "https://via.placeholder.com/150",
+                jersey: player.jersey,
                 position: player.position,
+                height: player.height,
+                weight: player.weight,
+                age: player.age,
                 team: team.name,
                 league: leagueKey.toUpperCase()
               });
@@ -254,14 +258,19 @@ function showRandomPlayer(allLeagues) {
   
     const spotlight = document.getElementById("spotlight-player");
     spotlight.innerHTML = `
-      <img src="${randomPlayer.headshot}" alt="${randomPlayer.fullName}" style="width:150px; border-radius: 50%;">
-      <h3>${randomPlayer.fullName}</h3>
-      <p><strong>Team:</strong> ${randomPlayer.team}</p>
-      <p><strong>Position:</strong> ${randomPlayer.position}</p>
-      <p><strong>League:</strong> ${randomPlayer.league}</p>
-      <p><strong>Position:</strong> ${randomPlayer.position}</p>
-      <p><strong>Position:</strong> ${randomPlayer.position}</p>
-      <p><strong>Position:</strong> ${randomPlayer.position}</p>
+      <img src="${randomPlayer.headshot}" alt="${randomPlayer.fullName}" style="width:150px;">
+      <div id="random-player-name">
+        <h3>${randomPlayer.fullName}</h3>
+        <h2>#${randomPlayer.jersey}</h2>
+        <p><strong></strong> ${randomPlayer.team}</p>
+    </div>
+    <div id="random-player-info">
+        <p><strong>Position:</strong> ${randomPlayer.position}</p>
+        <p><strong>League:</strong> ${randomPlayer.league}</p>
+        <p><strong>Height:</strong> ${randomPlayer.height} in</p>
+        <p><strong>Weight:</strong> ${randomPlayer.weight} lb</p>
+        <p><strong>Age:</strong> ${randomPlayer.age}</p>
+    </div>  
     `;
   }
   
