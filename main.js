@@ -38,6 +38,7 @@ function completeSteps(allLeagues) {
     }
 
     showRandomPlayer(allLeagues);
+    
 }
 
 
@@ -102,7 +103,8 @@ function updateCards() {
             card.style.border = `2px solid ${primaryColor}`;
 
             card.innerHTML = `
-                <div id="list-headshot"><img src="${player.headshot}" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
+                <div id="list-headshot"><img src="${player.headshot || 'https://via.placeholder.com/150'}"
+                alt="Headshot of ${player.fullName}" class="player-headshot"></div>
                 <div id="list-jersey"><h2>#${player.jersey}</h2></div>
     
                 <div id="list-name"><h3>${player.fullName}</h3></div>
@@ -276,39 +278,123 @@ function showRandomPlayer(allLeagues) {
     `;
   }
 
-const baseUrl = "https://sports.is120.ckearl.com/api";
+  const searchBar = document.getElementById("team-search");
+  const playerCardsContainer = document.getElementById("cards-outer-container");
+  
+  searchBar.addEventListener("input", filterTeamsAndDisplayRoster);
+  
+  function filterTeamsAndDisplayRoster() {
+    const searchQuery = searchBar.value.toLowerCase();
+    let selectedLeague = null;
 
-const searchButton = document.getElementById("search-button");
-const searchInput = document.getElementById("team-search");
+    // Loop through all leagues to find which one contains the team
+    for (const league in globalDataObject) {
+    const teams = globalDataObject[league].teams;
 
-searchButton.addEventListener("click", handleSearch);
-searchInput.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") handleSearch();
-});
+    for (const team of teams) {
+        if (team.name.toLowerCase().includes(searchQuery) || team.abbreviation.toLowerCase() === searchQuery) {
+        selectedLeague = league;
+        break; // Found it, stop searching
+        }
+    }
 
-async function handleSearch() {
-  const searchTerm = searchInput.value.trim().toLowerCase();
-  if (!searchTerm) return;
+    if (selectedLeague) break; // Stop outer loop if found
+    }
 
-  const leagues = ["nfl", "nba", "mlb", "nhl"];
-
-  for (const league of leagues) {
-    const teamsRes = await fetch(`${baseUrl}/${league}/teams`);
-    const teams = await teamsRes.json();
-
-    const team = teams.find(t => t.name.toLowerCase().includes(searchTerm));
-
-    if (team) {
-      // You found the team! Now get its roster:
-      const rosterRes = await fetch(`${baseUrl}/${league}/teams/${team.id}/roster`);
-      const players = await rosterRes.json();
-
-      displayRoster(players); // This is your function to display the cards
-      return;
+    if (!selectedLeague) {
+        // show a "Team not found" message
+        console.log("No matching team found in any league.");
+        return;
+      }
+      
+      const matchingTeams = globalDataObject[selectedLeague].teams.filter(team =>
+        team.name.toLowerCase().includes(searchQuery)
+      );
+  
+    // Filter teams by name, nickname, or location
+    const teams = globalDataObject[selectedLeague]?.teams || [];
+    const filteredTeams = teams.filter(team =>
+      team.name.toLowerCase().includes(searchQuery) ||
+      team.nickname.toLowerCase().includes(searchQuery) ||
+      team.location.toLowerCase().includes(searchQuery)
+    );
+  
+    // Clear the previous roster cards
+    playerCardsContainer.innerHTML = '';
+  
+    // Display the roster of the first filtered team (or any team if search is empty)
+    if (filteredTeams.length > 0) {
+      displayTeamRoster(filteredTeams[0]);
+    } else {
+      playerCardsContainer.innerHTML = '<p>No teams found matching your search.</p>';
+    }
+  
+    // If search is empty, you can populate the first team's roster
+    if (!searchQuery) {
+      displayTeamRoster(teams[0]);
     }
   }
+  
+function displayTeamRoster(team) {
+    const container = document.getElementById("cards-outer-container");
+    container.innerHTML = ""; // Clear previous content
 
-  // If no team matched:
-  document.getElementById("cards-outer-container").innerHTML = `<p>No team found for "${searchTerm}"</p>`;
+    if (!team) {
+        container.innerHTML = '<p>Team data is missing.</p>';
+        return;
+    }
+
+    // Add team header with logo and name
+    const header = document.createElement("div");
+    header.className = "team-header";
+    header.innerHTML = `
+        <img src="${team.logo}" alt="${team.name} logo" class="header-team-logo">
+        <h2 class="team-name">${team.name}</h2>
+    `;
+    container.appendChild(header);
+
+    const primaryColorObj = team.colors.find(c => c.primary);
+    const primaryColor = primaryColorObj ? primaryColorObj.color : "#ccc";
+
+    if (!Array.isArray(team.roster)) {
+        container.innerHTML += `<p>No roster data found for ${team.name}.</p>`;
+        return;
+    }
+
+    team.roster.forEach(player => {
+        const card = document.createElement("div");
+        card.className = "player-card";
+        card.style.border = `2px solid ${primaryColor}`;
+
+        card.innerHTML = `
+            <div id="list-headshot"><img src="${player.headshot}" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
+            <div id="list-jersey"><h2>#${player.jersey}</h2></div>
+            <div id="list-name"><h3>${player.fullName}</h3></div>
+            <div id="list-position"><p>Position: ${player.position}</p></div>
+            <div id="list-height"><p>Height: ${player.height} in</p></div>
+            <div id="list-weight"><p>Weight: ${player.weight} lb</p></div>
+            <div id="list-age"><p>Age: ${player.age}</p></div>
+        `;
+
+        container.appendChild(card);
+    });
 }
 
+  
+  /*selectedTeam.roster.forEach(player => {
+            let card = document.createElement("div");
+            card.className = "player-card";
+            card.style.border = `2px solid ${primaryColor}`;
+
+            card.innerHTML = `
+                <div id="list-headshot"><img src="${player.headshot}" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
+                <div id="list-jersey"><h2>#${player.jersey}</h2></div>
+    
+                <div id="list-name"><h3>${player.fullName}</h3></div>
+                <div id="list-position"><p>Position: ${player.position}</p></div>
+                <div id="list-height"><p>Height: ${player.height} in</p></div>
+                <div id="list-weight"><p>Weight: ${player.weight} lb</p></div>
+                <div id="list-age"><p>Age: ${player.age}</p></div>
+                
+            `;
+            container.appendChild(card); */
