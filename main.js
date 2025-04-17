@@ -101,9 +101,11 @@ function updateCards() {
             let card = document.createElement("div");
             card.className = "player-card";
             card.style.border = `2px solid ${primaryColor}`;
+            console.log(player.headshot);
 
             card.innerHTML = `
-                <div id="list-headshot"><img src="${player.headshot || 'https://via.placeholder.com/150'}"
+                <div id="list-headshot"><img src="${player.headshot}"
+                onerror="this.onerror=null;this.src='./images/placeholder_pic1.png';"
                 alt="Headshot of ${player.fullName}" class="player-headshot"></div>
                 <div id="list-jersey"><h2>#${player.jersey}</h2></div>
     
@@ -367,7 +369,7 @@ function displayTeamRoster(team) {
         card.style.border = `2px solid ${primaryColor}`;
 
         card.innerHTML = `
-            <div id="list-headshot"><img src="${player.headshot}" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
+            <div id="list-headshot"><img src="${player.headshot}" onerror="this.onerror=null;this.src='./images/placeholder_pic1.png';" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
             <div id="list-jersey"><h2>#${player.jersey}</h2></div>
             <div id="list-name"><h3>${player.fullName}</h3></div>
             <div id="list-position"><p>Position: ${player.position}</p></div>
