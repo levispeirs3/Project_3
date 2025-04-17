@@ -282,8 +282,14 @@ function showRandomPlayer(allLeagues) {
 
   const searchBar = document.getElementById("team-search");
   const playerCardsContainer = document.getElementById("cards-outer-container");
+  const searchBtn = document.getElementById("search-button");
   
-  searchBar.addEventListener("input", filterTeamsAndDisplayRoster);
+  searchBtn.addEventListener("click", filterTeamsAndDisplayRoster);
+  searchBar.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      filterTeamsAndDisplayRoster();
+    }
+  });
   
   function filterTeamsAndDisplayRoster() {
     const searchQuery = searchBar.value.toLowerCase();
@@ -337,7 +343,7 @@ function showRandomPlayer(allLeagues) {
     }
   }
   
-function displayTeamRoster(team) {
+function displayTeamRoster(team, page = 1) {
     const container = document.getElementById("cards-outer-container");
     container.innerHTML = ""; // Clear previous content
 
@@ -358,29 +364,81 @@ function displayTeamRoster(team) {
     const primaryColorObj = team.colors.find(c => c.primary);
     const primaryColor = primaryColorObj ? primaryColorObj.color : "#ccc";
 
-    if (!Array.isArray(team.roster)) {
-        container.innerHTML += `<p>No roster data found for ${team.name}.</p>`;
-        return;
-    }
+    const players = team.roster || [];
 
-    team.roster.forEach(player => {
+    // Pagination logic
+    const playersPerPage = 12;
+    const totalPages = Math.ceil(players.length / playersPerPage);
+    const startIndex = (page - 1) * playersPerPage;
+    const endIndex = startIndex + playersPerPage;
+    const paginatedPlayers = players.slice(startIndex, endIndex);
+
+    // Render player cards
+    paginatedPlayers.forEach(player => {
         const card = document.createElement("div");
         card.className = "player-card";
         card.style.border = `2px solid ${primaryColor}`;
 
         card.innerHTML = `
             <div id="list-headshot"><img src="${player.headshot}" onerror="this.onerror=null;this.src='./images/placeholder_pic1.png';" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
-            <div id="list-jersey"><h2>#${player.jersey}</h2></div>
+            <div id="list-jersey"><h2>#${player.jersey || " --"}</h2></div>
             <div id="list-name"><h3>${player.fullName}</h3></div>
             <div id="list-position"><p>Position: ${player.position}</p></div>
             <div id="list-height"><p>Height: ${player.height} in</p></div>
             <div id="list-weight"><p>Weight: ${player.weight} lb</p></div>
             <div id="list-age"><p>Age: ${player.age}</p></div>
         `;
-
         container.appendChild(card);
     });
+
+    // Add pagination controls
+    const paginationWrapper = document.getElementById("pagination-wrapper");
+    paginationWrapper.innerHTML = ""; // Clear previous pagination 
+
+    if (players.length > playersPerPage) {
+        const pagination = document.createElement("div");
+        pagination.className = "pagination-controls";
+
+        pagination.innerHTML = `
+            <button ${page === 1 ? "disabled" : ""} id="prev-page">Previous</button>
+            <span>Page ${page} of ${totalPages}</span>
+            <button ${page === totalPages ? "disabled" : ""} id="next-page">Next</button>
+        `;
+
+        paginationWrapper.appendChild(pagination);
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+            displayTeamRoster(team, page - 1);
+        });
+        document.getElementById("next-page").addEventListener("click", () => {
+            displayTeamRoster(team, page + 1);
+        });
+    }
 }
+
+//     if (!Array.isArray(team.roster)) {
+//         container.innerHTML += `<p>No roster data found for ${team.name}.</p>`;
+//         return;
+//     }
+
+//     team.roster.forEach(player => {
+//         const card = document.createElement("div");
+//         card.className = "player-card";
+//         card.style.border = `2px solid ${primaryColor}`;
+
+//         card.innerHTML = `
+//             <div id="list-headshot"><img src="${player.headshot}" onerror="this.onerror=null;this.src='./images/placeholder_pic1.png';" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
+//             <div id="list-jersey"><h2>#${player.jersey || " --"}</h2></div>
+//             <div id="list-name"><h3>${player.fullName}</h3></div>
+//             <div id="list-position"><p>Position: ${player.position}</p></div>
+//             <div id="list-height"><p>Height: ${player.height} in</p></div>
+//             <div id="list-weight"><p>Weight: ${player.weight} lb</p></div>
+//             <div id="list-age"><p>Age: ${player.age}</p></div>
+//         `;
+
+//         container.appendChild(card);
+//     });
+// }
 
   
   /*selectedTeam.roster.forEach(player => {

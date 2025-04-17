@@ -255,6 +255,8 @@ button.next { right: 10px; }
     margin: 0.2rem;
 }
 
+
+
 /* --- footer --- */
 
 footer {
@@ -330,6 +332,19 @@ h1.logo {
     gap: 1rem;
 }
 
+#team-search {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    padding-right: 2.5rem; 
+    font-size: 1rem;
+    color: #333;
+    cursor: text;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 375px;
+}
+
 /* Divider */
 
 #page-2-divider {
@@ -343,19 +358,6 @@ h1.logo {
     justify-content: center;
     align-items: center;
     width: 100%;
-}
-
-#team-search {
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    padding: 0.6rem 1rem;
-    padding-right: 2.5rem; 
-    font-size: 1rem;
-    color: #333;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    min-width: 375px;
 }
 
 .hero-dropdown {
@@ -652,5 +654,35 @@ select {
     font-style: italic;
     margin-top: 20px;
     font-size: 1.1rem;
+}
+
+/* Pagination */
+
+#pagination-wrapper {
+    position: relative; 
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    padding-right: 1rem;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.pagination-controls button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: 100px;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
