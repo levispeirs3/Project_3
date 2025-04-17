@@ -241,6 +241,7 @@ function showRandomPlayer(allLeagues) {
                 weight: player.weight,
                 age: player.age,
                 team: team.name,
+                logo: team.logo,
                 league: leagueKey.toUpperCase()
               });
             });
@@ -258,6 +259,7 @@ function showRandomPlayer(allLeagues) {
   
     const spotlight = document.getElementById("spotlight-player");
     spotlight.innerHTML = `
+    <img src="${randomPlayer.logo}" alt="${randomPlayer.fullName}'s team logo">
       <img src="${randomPlayer.headshot}" alt="${randomPlayer.fullName}" style="width:150px;">
       <div id="random-player-name">
         <h3>${randomPlayer.fullName}</h3>
@@ -273,4 +275,3 @@ function showRandomPlayer(allLeagues) {
     </div>  
     `;
   }
-  
