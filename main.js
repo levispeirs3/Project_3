@@ -107,7 +107,7 @@ function updateCards() {
                 <div id="list-headshot"><img src="${player.headshot}"
                 onerror="this.onerror=null;this.src='./images/placeholder_pic1.png';"
                 alt="Headshot of ${player.fullName}" class="player-headshot"></div>
-                <div id="list-jersey"><h2>#${player.jersey}</h2></div>
+                <div id="list-jersey"><h2>#${player.jersey || " --"}</h2></div>
     
                 <div id="list-name"><h3>${player.fullName}</h3></div>
                 <div id="list-position"><p>Position: ${player.position}</p></div>
