@@ -26,7 +26,21 @@
 
     <!-- Main section of page -->
     <main>
-        <div class="select-container">
+
+        <!-- Search Bar -->
+        <section class="search-container"> 
+            <div class="search-bar-container">
+                <input type="text" id="team-search" placeholder="Search for a team...">
+                <button id="search-button"><i class="bi bi-search"></i></button>
+            </div>
+        </section>  
+        
+        <div id="page-2-divider">
+            <h3>-- OR --</h3>
+        </div>
+        
+        <!-- Dropdown Menu -->
+        <section class="select-container">
             <div class="hero-dropdown">
                 <div class="dropdown-container">
                     <select id="league-dropdown" name="leagues">
@@ -51,7 +65,7 @@
                     <button id="list-view-btn"><i class="dropdown-toggle bi bi-list-task"></i></button>
                 </div> 
             </div>
-        </div>   
+        </section>   
         
         <!-- Section to hold the cards -->
         <div id="cards-outer-container"></div>

@@ -259,19 +259,56 @@ function showRandomPlayer(allLeagues) {
   
     const spotlight = document.getElementById("spotlight-player");
     spotlight.innerHTML = `
-    <img src="${randomPlayer.logo}" alt="${randomPlayer.fullName}'s team logo">
       <img src="${randomPlayer.headshot}" alt="${randomPlayer.fullName}" style="width:150px;">
       <div id="random-player-name">
         <h3>${randomPlayer.fullName}</h3>
         <h2>#${randomPlayer.jersey}</h2>
-        <p><strong></strong> ${randomPlayer.team}</p>
+        <p><strong></strong> ${randomPlayer.team}<img src="${randomPlayer.logo}" alt="${randomPlayer.fullName}'s team logo"></p>
+        
     </div>
     <div id="random-player-info">
-        <p><strong>Position:</strong> ${randomPlayer.position}</p>
-        <p><strong>League:</strong> ${randomPlayer.league}</p>
-        <p><strong>Height:</strong> ${randomPlayer.height} in</p>
-        <p><strong>Weight:</strong> ${randomPlayer.weight} lb</p>
-        <p><strong>Age:</strong> ${randomPlayer.age}</p>
+        <p><strong>Position:</strong>&nbsp; ${randomPlayer.position}</p>
+        <p><strong>League:</strong>&nbsp;${randomPlayer.league}</p>
+        <p><strong>Height:</strong>&nbsp;${randomPlayer.height} in</p>
+        <p><strong>Weight:</strong>&nbsp;${randomPlayer.weight} lb</p>
+        <p><strong>Age:&nbsp;</strong> ${randomPlayer.age}</p>
     </div>  
     `;
   }
+
+const baseUrl = "https://sports.is120.ckearl.com/api";
+
+const searchButton = document.getElementById("search-button");
+const searchInput = document.getElementById("team-search");
+
+searchButton.addEventListener("click", handleSearch);
+searchInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") handleSearch();
+});
+
+async function handleSearch() {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+  if (!searchTerm) return;
+
+  const leagues = ["nfl", "nba", "mlb", "nhl"];
+
+  for (const league of leagues) {
+    const teamsRes = await fetch(`${baseUrl}/${league}/teams`);
+    const teams = await teamsRes.json();
+
+    const team = teams.find(t => t.name.toLowerCase().includes(searchTerm));
+
+    if (team) {
+      // You found the team! Now get its roster:
+      const rosterRes = await fetch(`${baseUrl}/${league}/teams/${team.id}/roster`);
+      const players = await rosterRes.json();
+
+      displayRoster(players); // This is your function to display the cards
+      return;
+    }
+  }
+
+  // If no team matched:
+  document.getElementById("cards-outer-container").innerHTML = `<p>No team found for "${searchTerm}"</p>`;
+}
+

@@ -229,6 +229,17 @@ button.next { right: 10px; }
     border-left: 3px solid #ccc;
 }
 
+#random-player-name img {
+    width: 50px;
+    height: 50px;
+    margin-left: 0.5rem;
+}
+
+.player-spotlight p {
+    display: flex;
+    align-items: center;
+}
+
 .player-spotlight img {
     width: 120px;
     height: 120px;
@@ -303,6 +314,30 @@ h1.logo {
 
 /* --- Page 2 --- */
 
+/* Search Bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: start;
+    width: 75%;
+    margin: 100px 0px 25px 0px;
+    gap: 1rem;
+}
+
+/* Divider */
+
+#page-2-divider {
+    margin-left: 15rem;
+}
+
+/* Dropdown Menu */
+
 .select-container {
     display: flex;
     justify-content: center;
@@ -310,11 +345,24 @@ h1.logo {
     width: 100%;
 }
 
+#team-search {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    padding-right: 2.5rem; 
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 375px;
+}
+
 .hero-dropdown {
     display: flex;
     justify-content: space-between;
     width: 75%;
-    margin: 100px 0px 50px 0px;
+    margin: 25px 0px 50px 0px;
 }
 
 .dropdown-container {
