@@ -38,7 +38,6 @@ function completeSteps(allLeagues) {
     }
 
     showRandomPlayer(allLeagues);
-    
 }
 
 
@@ -94,30 +93,7 @@ function updateCards() {
     }
     
     if (view === "roster") {
-        const primaryColorObj = selectedTeam.colors.find(c => c.primary);
-        const primaryColor = primaryColorObj ? primaryColorObj.color : "#ccc";
-
-        selectedTeam.roster.forEach(player => {
-            let card = document.createElement("div");
-            card.className = "player-card";
-            card.style.border = `2px solid ${primaryColor}`;
-            console.log(player.headshot);
-
-            card.innerHTML = `
-                <div id="list-headshot"><img src="${player.headshot}"
-                onerror="this.onerror=null;this.src='./images/placeholder_pic1.png';"
-                alt="Headshot of ${player.fullName}" class="player-headshot"></div>
-                <div id="list-jersey"><h2>#${player.jersey || " --"}</h2></div>
-    
-                <div id="list-name"><h3>${player.fullName}</h3></div>
-                <div id="list-position"><p>Position: ${player.position}</p></div>
-                <div id="list-height"><p>Height: ${player.height} in</p></div>
-                <div id="list-weight"><p>Weight: ${player.weight} lb</p></div>
-                <div id="list-age"><p>Age: ${player.age}</p></div>
-                
-            `;
-            container.appendChild(card);
-        });
+      displayTeamRoster(selectedTeam);
     } else if (view === "recent_games") {
         selectedTeam.recent_games.forEach(game => {
             let card = document.createElement("div");
@@ -215,12 +191,6 @@ function setActiveView(view) {
 
 gridBtn.addEventListener("click", () => setActiveView("grid"));
 listBtn.addEventListener("click", () => setActiveView("list"));
-
-
-
-
-
-
 
 
 ///////////////// Player of the week //////////////////////
@@ -415,3 +385,26 @@ function displayTeamRoster(team, page = 1) {
         });
     }
 }
+
+
+
+// --- Dark Mode --- //   
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById('toggle-dark-mode');
+
+  // Check if the button exists
+  if (toggleButton) {
+      // Apply saved mode from localStorage
+      if (localStorage.getItem('darkMode') === 'true') {
+          document.body.classList.add('dark-mode');
+      }
+
+      toggleButton.addEventListener('click', () => {
+          document.body.classList.toggle('dark-mode');
+          const isDark = document.body.classList.contains('dark-mode');
+          localStorage.setItem('darkMode', isDark);
+      });
+  } else {
+      console.warn("Dark mode toggle button not found in the DOM.");
+  }
+});

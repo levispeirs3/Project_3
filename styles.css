@@ -8,6 +8,11 @@ body {
     font-family: 'Kanit', sans-serif;
     background: url('images/background.png') repeat top left, rgba(0, 0, 0, 1);
     background-size: auto;
+
+    /* background-color: white;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease; */
+  
 }
 
 /* Index Page */
@@ -36,6 +41,8 @@ body {
     text-underline-offset: 0.2rem;
 }
 
+/* Header Section */
+
 header {
     background-color: #1c1c1b;
     width: 100%;
@@ -60,6 +67,7 @@ header {
 nav {
     display: flex;
     gap: 3rem;
+    align-items: center;
 }
 
 nav a {
@@ -79,6 +87,9 @@ nav a:hover {
     text-decoration-color: #a5141b; 
     text-underline-offset: 0.25rem;
 }
+
+
+/* Hero Section */
 
 .hero-container {
     background-color: white;
@@ -155,6 +166,8 @@ nav a:hover {
     background: #1c1c1bdc;
     padding: 0.5rem 1rem;
     border-radius: 4px;
+    /* UTD: Z-Index */
+    z-index: 1;
   }
   
 button.prev, button.next {
@@ -176,13 +189,13 @@ button.next { right: 10px; }
     width: 95%;
     display: flex;
     justify-content: end;
+    align-items: center;
     gap: 10px;
     margin: 1rem 0;
 }
 
 .button-container p {
     font-size: 1.05rem;
-    color: #1c1c1b;
 }
 
 #sports-btn {
@@ -221,7 +234,7 @@ button.next { right: 10px; }
 }
 
 #random-player-name h3, h2, p {
-    margin: 0.25rem;
+    margin: 0rem;
 }
 
 #random-player-info {
@@ -238,6 +251,7 @@ button.next { right: 10px; }
 .player-spotlight p {
     display: flex;
     align-items: center;
+    margin: 0.2rem;
 }
 
 .player-spotlight img {
@@ -250,12 +264,6 @@ button.next { right: 10px; }
     margin: 0.5rem 0 0.25rem 0;
     font-size: 1.5rem;
 }
-
-.player-spotlight p {
-    margin: 0.2rem;
-}
-
-
 
 /* --- footer --- */
 
@@ -288,6 +296,23 @@ footer {
     gap: 0.75rem;
 }
 
+.nav-teams a {
+    color: white;
+    text-decoration: none;
+    font-family: "Fugaz One", sans-serif;
+    text-decoration: underline;
+    text-decoration-color: #e39529; 
+    text-underline-offset: 0.25rem;
+    transition: ease-in-out 0.2s;
+}
+
+.nav-teams a:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
+    text-decoration-color: #a5141b; 
+    text-underline-offset: 0.25rem;
+}
+
 .footer-info {
     width: 95%;
     display: flex;
@@ -312,7 +337,12 @@ h1.logo {
     font-size: 24px;
     color: white;
     text-decoration: none;
-  }
+    transition: ease-in-out 0.2s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.15);
+}
 
 /* --- Page 2 --- */
 
@@ -686,3 +716,115 @@ select {
     cursor: not-allowed;
 }
 
+/********** Dark Mode **********/
+/* /////////////////////////////// */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: url("images/dark-mode-background.png");
+        color: white;
+    }
+
+    .hero-container {
+        background-color: #1c1c1b;
+        border: none;
+    }
+
+    #player-of-the-week {
+        background-color: #1c1c1b;
+        border: none;
+    }
+
+    .btn:hover {
+        background-color: #e39529;
+        text-decoration-color: #121212;
+        }
+
+    #cards-outer-container.grid-view {
+        background-color: #121212;
+        border: none;
+    }
+
+    #cards-outer-container.list-view {
+        background-color: #121212;
+        border: none;
+    }
+
+    .player-card {
+        background-color: #353535;
+    }
+
+    #team-search {
+        background-color: #353535;
+        color: white;
+        opacity: 1;
+    }
+
+    #search-button {
+        background-color: #353535;
+        color: white;
+    }
+
+    #grid-view-btn {
+        background-color: #353535;
+        color: white;
+    }
+
+    #grid-view-btn.active {
+        background-color: #696969;
+    }
+
+    #list-view-btn {
+        background-color: #353535;
+        color: white;
+    }
+
+    #list-view-btn.active {
+        background-color: #696969;
+    }
+
+    #next-page {
+        background-color: #353535;
+        color: white;
+    }
+
+    #prev-page {
+        background-color: #353535;
+        color: white;
+    }
+
+    select {
+        background-color: #353535;
+        color: white;
+    }
+    
+};
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+    background-image: none;
+  }
+  
+  #toggle-dark-mode {
+    padding: 0.5rem 0.5rem;
+    font-family: "Fugaz One", sans-serif;
+    background-color: #1c1c1b;
+    color: white;
+    font-size: 1.1em;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    text-decoration: underline;
+    text-decoration-color: #e39529; 
+    text-underline-offset: 0.25rem;
+    transition: ease-in-out 0.2s;
+  }
+
+  #toggle-dark-mode:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
+    text-decoration-color: #a5141b; 
+    text-underline-offset: 0.25rem;
+}
