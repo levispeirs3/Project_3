@@ -386,25 +386,28 @@ function displayTeamRoster(team, page = 1) {
     }
 }
 
-
-
 // --- Dark Mode --- //   
 document.addEventListener("DOMContentLoaded", function () {
-  const toggleButton = document.getElementById('toggle-dark-mode');
-
-  // Check if the button exists
-  if (toggleButton) {
-      // Apply saved mode from localStorage
-      if (localStorage.getItem('darkMode') === 'true') {
-          document.body.classList.add('dark-mode');
-      }
-
-      toggleButton.addEventListener('click', () => {
-          document.body.classList.toggle('dark-mode');
-          const isDark = document.body.classList.contains('dark-mode');
-          localStorage.setItem('darkMode', isDark);
-      });
-  } else {
-      console.warn("Dark mode toggle button not found in the DOM.");
-  }
-});
+    const toggleButton = document.getElementById('toggle-dark-mode');
+  
+    // Check if the button exists
+  //   if (toggleButton) {
+        // Apply saved mode from localStorage
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = "Dark Mode: ON";
+        } else {
+            toggleButton.textContent = "Dark Mode: OFF";
+        }
+  
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            toggleButton.textContent = isDark ? "Dark Mode: ON" : "Dark Mode: OFF";
+        });
+  //   } else {
+  //       console.warn("Dark mode toggle button not found in the DOM.");
+  //   }
+  });

@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-
 }
 
 body {
@@ -8,11 +7,6 @@ body {
     font-family: 'Kanit', sans-serif;
     background: url('images/background.png') repeat top left, rgba(0, 0, 0, 1);
     background-size: auto;
-
-    /* background-color: white;
-    color: black;
-    transition: background-color 0.3s ease, color 0.3s ease; */
-  
 }
 
 /* Index Page */
@@ -88,6 +82,29 @@ nav a:hover {
     text-underline-offset: 0.25rem;
 }
 
+#toggle-dark-mode {
+    padding: 0.5rem 0.5rem;
+    font-family: "Fugaz One", sans-serif;
+    background-color: #1c1c1b;
+    color: white;
+    font-size: 1.1em;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 175px;
+    text-decoration: underline;
+    text-decoration-color: #e39529; 
+    text-underline-offset: 0.25rem;
+    transition: ease-in-out 0.2s;
+  }
+
+  #toggle-dark-mode:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
+    text-decoration-color: #a5141b; 
+    text-underline-offset: 0.25rem;
+}
+
 
 /* Hero Section */
 
@@ -119,6 +136,8 @@ nav a:hover {
     margin-bottom: 10rem;
     font-size: 1rem;
 }
+
+/* --- Carousel --- */
 
 .carousel {
     position: relative;
@@ -265,7 +284,7 @@ button.next { right: 10px; }
     font-size: 1.5rem;
 }
 
-/* --- footer --- */
+/* --- Footer --- */
 
 footer {
     background-color: #1c1c1b;
@@ -346,7 +365,7 @@ h1.logo {
 
 /* --- Page 2 --- */
 
-/* Search Bar */
+/* --- Search Bar --- */
 .search-container {
     display: flex;
     justify-content: center;
@@ -375,13 +394,13 @@ h1.logo {
     min-width: 375px;
 }
 
-/* Divider */
+/* --- Divider --- */
 
 #page-2-divider {
     margin-left: 15rem;
 }
 
-/* Dropdown Menu */
+/* --- Dropdown Menu --- */
 
 .select-container {
     display: flex;
@@ -472,7 +491,7 @@ select {
     gap: 10px;
     width: 100%;
     padding: 0 0 10px 0;
-    border-bottom: 2px solid #ccc; /* Optional: adds a subtle divider */
+    border-bottom: 2px solid #ccc;
 }
 
 .header-team-logo {
@@ -496,6 +515,7 @@ select {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     padding: 1rem;
+    padding-bottom: 2rem;
     margin: 0 auto;
     justify-items: center;
     min-height: 20vh;
@@ -519,7 +539,7 @@ select {
     min-height: 20vh;
 }
 
-/* player-card grid-view */
+/* --- player-card grid-view --- */
 
 #cards-outer-container.grid-view .player-card {
     display: flex;
@@ -552,7 +572,7 @@ select {
     margin: 0.5rem
 }
 
-/* game-card grid-view */
+/* --- game-card grid-view --- */
 
 #cards-outer-container.grid-view .game-card #list-shortName {
     margin-bottom: 1rem;
@@ -565,7 +585,7 @@ select {
     width: 100%;
 }
 
-/* player-card list-view */
+/* --- player-card list-view --- */
 
 #cards-outer-container.list-view .player-card {
     display: flex;
@@ -600,7 +620,7 @@ select {
     width: 15%;
 }
 
-/* game-card list-view */
+/* --- game-card list-view --- */
 
 #cards-outer-container.list-view .game-card {
     display: flex;
@@ -686,7 +706,7 @@ select {
     font-size: 1.1rem;
 }
 
-/* Pagination */
+/* --- Pagination --- */
 
 #pagination-wrapper {
     position: relative; 
@@ -716,115 +736,82 @@ select {
     cursor: not-allowed;
 }
 
-/********** Dark Mode **********/
-/* /////////////////////////////// */
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-image: url("images/dark-mode-background.png");
-        color: white;
-    }
-
-    .hero-container {
-        background-color: #1c1c1b;
-        border: none;
-    }
-
-    #player-of-the-week {
-        background-color: #1c1c1b;
-        border: none;
-    }
-
-    .btn:hover {
-        background-color: #e39529;
-        text-decoration-color: #121212;
-        }
-
-    #cards-outer-container.grid-view {
-        background-color: #121212;
-        border: none;
-    }
-
-    #cards-outer-container.list-view {
-        background-color: #121212;
-        border: none;
-    }
-
-    .player-card {
-        background-color: #353535;
-    }
-
-    #team-search {
-        background-color: #353535;
-        color: white;
-        opacity: 1;
-    }
-
-    #search-button {
-        background-color: #353535;
-        color: white;
-    }
-
-    #grid-view-btn {
-        background-color: #353535;
-        color: white;
-    }
-
-    #grid-view-btn.active {
-        background-color: #696969;
-    }
-
-    #list-view-btn {
-        background-color: #353535;
-        color: white;
-    }
-
-    #list-view-btn.active {
-        background-color: #696969;
-    }
-
-    #next-page {
-        background-color: #353535;
-        color: white;
-    }
-
-    #prev-page {
-        background-color: #353535;
-        color: white;
-    }
-
-    select {
-        background-color: #353535;
-        color: white;
-    }
-    
-};
+/* --- Dark Mode --- */
 
 body.dark-mode {
-    background-color: #121212;
+    background-image: url("images/dark-mode-background.png");
     color: white;
-    background-image: none;
-  }
-  
-  #toggle-dark-mode {
-    padding: 0.5rem 0.5rem;
-    font-family: "Fugaz One", sans-serif;
-    background-color: #1c1c1b;
-    color: white;
-    font-size: 1.1em;
-    border: 1px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 150px;
-    text-decoration: underline;
-    text-decoration-color: #e39529; 
-    text-underline-offset: 0.25rem;
-    transition: ease-in-out 0.2s;
-  }
+}
 
-  #toggle-dark-mode:hover {
-    transform: scale(1.05);
-    text-decoration: underline;
-    text-decoration-color: #a5141b; 
-    text-underline-offset: 0.25rem;
+body.dark-mode .hero-container {
+    background-color: #1c1c1b;
+    border: none;
+}
+
+body.dark-mode #player-of-the-week {
+    background-color: #1c1c1b;
+    border: none;
+}
+
+body.dark-mode .btn:hover {
+    background-color: #e39529;
+    text-decoration-color: #121212;
+    }
+
+body.dark-mode #cards-outer-container.grid-view {
+    background-color: #121212;
+    border: none;
+}
+
+body.dark-mode #cards-outer-container.list-view {
+    background-color: #121212;
+    border: none;
+}
+
+body.dark-mode .player-card {
+    background-color: #353535;
+}
+
+body.dark-mode #team-search {
+    background-color: #353535;
+    color: white;
+    opacity: 1;
+}
+
+body.dark-mode #search-button {
+    background-color: #353535;
+    color: white;
+}
+
+body.dark-mode #grid-view-btn {
+    background-color: #353535;
+    color: white;
+}
+
+body.dark-mode #grid-view-btn.active {
+    background-color: #696969;
+}
+
+body.dark-mode #list-view-btn {
+    background-color: #353535;
+    color: white;
+}
+
+body.dark-mode #list-view-btn.active {
+    background-color: #696969;
+}
+
+body.dark-mode #next-page {
+    background-color: #353535;
+    color: white;
+}
+
+body.dark-mode #prev-page {
+    background-color: #353535;
+    color: white;
+}
+
+body.dark-mode select {
+    background-color: #353535;
+    color: white;
 }
