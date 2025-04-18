@@ -9,9 +9,8 @@ fetch("https://sports.is120.ckearl.com")
         completeSteps(globalDataObject);
     });
 
+// Complete all the steps in the main.js
 function completeSteps(allLeagues) {
-    // makeTeamList(allLeagues)
-    // console.log(allLeagues)
     const cardsContainer = document.getElementById("cards-outer-container");
     const gridBtn = document.getElementById("grid-view-btn");
     const dropdown = document.getElementById("league-dropdown");
@@ -41,7 +40,7 @@ function completeSteps(allLeagues) {
 }
 
 
-
+// Populate the teams dropdown select menu on page2
 function makeTeamList(dataObject, selectedLeague) {
     console.log("Available keys in dataObject:", Object.keys(dataObject));
 
@@ -63,6 +62,7 @@ function makeTeamList(dataObject, selectedLeague) {
     
 }
 
+// This updateds the cards based on what is picked in dropdown menu and searched in the search bar
 function updateCards() {
     let league = document.getElementById("league-dropdown").value;
     let teamName = document.getElementById("team-list").value;
@@ -150,7 +150,7 @@ function updateCards() {
     }
 }
 
-
+// Determine the view of the cards between grid and list view
 const gridBtn = document.getElementById("grid-view-btn");
 const listBtn = document.getElementById("list-view-btn");
 const cardsContainer = document.getElementById("cards-outer-container");
@@ -171,7 +171,7 @@ listBtn.addEventListener("click", () => {
     currentViewClass = "list-view";
 });
 
-
+// function to add and take away active view
 function setActiveView(view) {
     gridBtn.classList.remove("active");
     listBtn.classList.remove("active");
@@ -250,6 +250,7 @@ function showRandomPlayer(allLeagues) {
     `;
   }
 
+// Search bar functionality
   const searchBar = document.getElementById("team-search");
   const playerCardsContainer = document.getElementById("cards-outer-container");
   const searchBtn = document.getElementById("search-button");
@@ -272,7 +273,7 @@ function showRandomPlayer(allLeagues) {
     for (const team of teams) {
         if (team.name.toLowerCase().includes(searchQuery) || team.abbreviation.toLowerCase() === searchQuery) {
         selectedLeague = league;
-        break; // Found it, stop searching
+        break;
         }
     }
 
@@ -343,14 +344,15 @@ function displayTeamRoster(team, page = 1) {
     const endIndex = startIndex + playersPerPage;
     const paginatedPlayers = players.slice(startIndex, endIndex);
 
-    // Render player cards
     paginatedPlayers.forEach(player => {
         const card = document.createElement("div");
         card.className = "player-card";
         card.style.border = `2px solid ${primaryColor}`;
 
+        // Removed background for the placeholder img of player headshot - UTD presentation
         card.innerHTML = `
-            <div id="list-headshot"><img src="${player.headshot}" onerror="this.onerror=null;this.src='./images/placeholder_pic1.png';" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
+            <div id="list-headshot"><img src="${player.headshot}" onerror="this.
+            onerror=null;this.src='./images/placeholder_pic1.png';" alt="Headshot of ${player.fullName}" class="player-headshot"></div>
             <div id="list-jersey"><h2>#${player.jersey || " --"}</h2></div>
             <div id="list-name"><h3>${player.fullName}</h3></div>
             <div id="list-position"><p>Position: ${player.position}</p></div>
@@ -411,3 +413,6 @@ document.addEventListener("DOMContentLoaded", function () {
   //       console.warn("Dark mode toggle button not found in the DOM.");
   //   }
   });
+
+
+// We used AI in helping with the functionality of the functions and other js needs

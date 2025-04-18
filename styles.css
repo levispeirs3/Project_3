@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    /* What font to find Kanit font - UTD presentation */
     font-family: 'Kanit', sans-serif;
     background: url('images/background.png') repeat top left, rgba(0, 0, 0, 1);
     background-size: auto;
@@ -580,9 +581,8 @@ select {
     width: 100%;
 }
 
-#card-outer-container.grid-view .game-card #list-shortName {
-    border-bottom: 3px solid #ccc;
-    width: 100%;
+#cards-outer-container.grid-view .game-card p {
+    margin-bottom: 0.5rem;
 }
 
 /* --- player-card list-view --- */
@@ -736,7 +736,7 @@ select {
     cursor: not-allowed;
 }
 
-/* --- Dark Mode --- */
+/* --- Dark Mode CSS - UTD presentation --- */
 
 body.dark-mode {
     background-image: url("images/dark-mode-background.png");
@@ -769,6 +769,10 @@ body.dark-mode #cards-outer-container.list-view {
 }
 
 body.dark-mode .player-card {
+    background-color: #353535;
+}
+
+body.dark-mode .game-card {
     background-color: #353535;
 }
 

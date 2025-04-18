@@ -17,19 +17,23 @@
 
 <body>
     <header>
+        <!-- Logo that we created -->
         <h1 class="logo">GRIT</h1>
         <nav>
+            <!-- links to our pages -->
             <a href="index.html">Home</a>
             <a href="page2.html">Sports</a>
             <button id="toggle-dark-mode">Dark Mode</button>
         </nav>
     </header>
 
+    <!-- Main container on homepage -->
     <section class="hero-container">
         <div class="hero">
             <h1>Welcome! Your ultimate destination for sports information.</h1>
         </div>
 
+        <!-- This is one of our interactive features. You can toggle between the pictures on the homepage -->
         <section class="carousel">
             <div class="carousel-images">
                 <div class="carousel-image active">
@@ -49,16 +53,19 @@
                     <span class="image-text">NHL</span>
                 </div>
             </div>
+            <!-- Next/Previous for images -->
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
         </section>
         
         <div class="button-container">
             <p>Explore and learn more about different Leagues, Teams, Players, and Games. Click here -></p>
+            <!-- link to the page 2 -->
             <a id="sports-btn" class="btn" href="page2.html">Explore Sports</a>
         </div>
     </section>
 
+    <!-- Player of the week section -->
     <section id="player-of-the-week" class="show-random-player">
         <h2>Featured Player of the Week:</h2>
         <div id="spotlight-player" class="player-spotlight">
@@ -84,6 +91,7 @@
             </div>
             <div class="social-icons">
                 <a href="https://www.facebook.com" target="_blank">
+                    <!-- Iconify - UTD presentation -->
                     <i class="fab fa-facebook-f"></i>
                   </a>
                   
@@ -102,3 +110,12 @@
     <script src="main.js"></script>
 </body>
 </html>
+
+
+<!-- We did 6 UTD tools:
+coolors
+z-index
+whatFont
+remove.bg
+iconify
+dark mode css -->

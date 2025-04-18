@@ -14,11 +14,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
 </head>
 <body>
     <header>
+        <!-- Logo that we created -->
         <h1 class="logo">GRIT</h1>
         <nav>
+            <!-- links to our pages -->
             <a href="index.html">Home</a>
             <a href="page2.html">Sports</a>
             <button id="toggle-dark-mode">Dark Mode</button>
@@ -41,6 +45,7 @@
         </div>
         
         <!-- Dropdown Menu -->
+        <!-- this is our second interactive element. They are dropdown select menus wehre the user has to choose a league and team -->
         <section class="select-container">
             <div class="hero-dropdown">
                 <div class="dropdown-container">
@@ -56,11 +61,13 @@
                         <option value="" disabled selected>Team</option>
                     </select>
 
+                    <!-- Roster or Recent game dropdown -->
                     <select name="roster" id="roster-dropdown">
                         <option value="roster">Roster</option>
                         <option value="recent_games">Recent Games</option>
                     </select>
                 </div>
+                <!-- Toggle between grid and list view -->
                 <div id="" class="toggle-container">
                     <button id="grid-view-btn"><i class="dropdown-toggle bi bi-grid-fill"></i></button>
                     <button id="list-view-btn"><i class="dropdown-toggle bi bi-list-task"></i></button>
@@ -71,6 +78,7 @@
         <!-- Section to hold the cards -->
         <div id="cards-outer-container"></div>
 
+        <!-- Page Next/previous -->
         <div id="pagination-wrapper"></div>
 
     </main>
@@ -81,6 +89,7 @@
     <footer>
         <h1 class="logo">GRIT</h1>
         <div class="footer-nav">
+            <!-- Links to our second page with all the leagues -->
             <div class="nav-teams">
                 <a>NFL</a>
                 <a>MLB</a>
@@ -94,6 +103,7 @@
                 <p>&copy; 2025 GRIT. All rights reserved.</p>
                 <p>Created by: Levi Speirs and Mckay Yorgason</p>
             </div>
+            <!-- social media icons and links -->
             <div class="social-icons">
                 <a href="https://www.facebook.com" target="_blank">
                     <i class="fab fa-facebook-f"></i>
@@ -110,6 +120,7 @@
         </div>
     </footer>
 
+    <!-- connecting java script to html -->
     <script src="index.js"></script>
     <script type="module" src="./main.js"></script>
 </body>
