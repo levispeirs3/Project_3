@@ -233,10 +233,11 @@ function showRandomPlayer(allLeagues) {
   
     const spotlight = document.getElementById("spotlight-player");
     spotlight.innerHTML = `
-      <img src="${randomPlayer.headshot}" alt="${randomPlayer.fullName}" style="width:150px;">
+      <img src="${randomPlayer.headshot}" onerror="this.
+      onerror=null;this.src='./images/placeholder_pic1.png';" alt="${randomPlayer.fullName}" style="width:150px;">
       <div id="random-player-name">
         <h3>${randomPlayer.fullName}</h3>
-        <h2>#${randomPlayer.jersey}</h2>
+        <h2>#${randomPlayer.jersey || " -- "}</h2>
         <p><strong></strong> ${randomPlayer.team}<img src="${randomPlayer.logo}" alt="${randomPlayer.fullName}'s team logo"></p>
         
     </div>
